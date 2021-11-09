@@ -3,6 +3,8 @@ package it.unibo.oop.lab.collections1;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
@@ -13,8 +15,15 @@ public final class UseCollection {
 	private static final int INIT_VALUE = 1000;
     private static final int LAST_VALUE = 2000;
     private static final int HEAD_INSERT_ELEMS = 1_00_000;
-    private static final int TIMES = 1000;  
+    private static final int TIMES = 1000;
     
+    private static final long AFRICA_NUM_POPULATION = 1_110_635_000L;
+    private static final long AMERICAS_NUM_POPULATION = 972_005_000L;
+    private static final long ANTARCTICA_NUM_POPULATION = 0L;
+    private static final long ASIA_NUM_POPULATION = 4_298_723_000L;
+    private static final long EUROPE_NUM_POPULATION = 742_452_000L;
+    private static final long OCEANIA_NUM_POPULATION = 38_304_000L;
+   
     private UseCollection() {
     }
 
@@ -149,6 +158,17 @@ public final class UseCollection {
          * 
          * Oceania -> 38,304,000
          */
+    	
+    	Map<String, Long> map = new HashMap<>();
+    	
+    	map.put("Africa", AFRICA_NUM_POPULATION);
+    	map.put("Americas", AMERICAS_NUM_POPULATION);
+    	map.put("Antarctica", ANTARCTICA_NUM_POPULATION);
+    	map.put("Asia", ASIA_NUM_POPULATION);
+    	map.put("Europe", EUROPE_NUM_POPULATION);
+    	map.put("Oceania", OCEANIA_NUM_POPULATION);
+    	
+    	
         /*
          * 8) Compute the population of the world
          */
