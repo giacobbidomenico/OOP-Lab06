@@ -103,20 +103,36 @@ public final class UseCollection {
          * times, use as example TestPerformance.java.
          */
     	
-    	//Read element in the middle of the ArrayList and measure the time
+    	//Read elements in the middle of the ArrayList and measure the time
+    	System.out.println("Element read "+ TIMES +" times in the ArrayList"
+    			+ "is: " +  arrayList.get(arrayList.size() / 2));
+    	
     	time = System.nanoTime();
     	
-    	System.out.print("Element read "+ TIMES +" times is:[");
     	for(int i = 0; i < TIMES; i++) {
-    		System.out.print(arrayList.get(arrayList.size() / 2) +" ");
+    		arrayList.get(arrayList.size() / 2);
     	}
-    	System.out.println("]");
     	
     	time = System.nanoTime() - time;
     	System.out.println("Time to read "+ TIMES 
     			+ " elements int the middle of the ArrayList is "+ time
     			+ "ns (" + (time / TO_MS) + "ms)");
     	
+    	//Read elements in the middle of the LinkedList and measure the time
+    	System.out.println("Element read "+ TIMES +" times in the LinkedList"
+    			+ "is: " +  linkedList.get(linkedList.size() / 2));
+    	
+    	time = System.nanoTime();
+    	
+    	for(int i = 0; i < TIMES; i++) {
+    		linkedList.get(linkedList.size() / 2);
+    	}
+    	
+    	time = System.nanoTime() - time;
+    	System.out.println("Time to read "+ TIMES 
+    			+ " elements int the middle of the LinkedList is "+ time
+    			+ "ns (" + (time / TO_MS) + "ms)");
+    	    	
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
