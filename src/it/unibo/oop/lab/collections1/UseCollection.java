@@ -167,10 +167,14 @@ public final class UseCollection {
     	map.put("Asia", ASIA_NUM_POPULATION);
     	map.put("Europe", EUROPE_NUM_POPULATION);
     	map.put("Oceania", OCEANIA_NUM_POPULATION);
-    	
-    	
+    	 	
         /*
          * 8) Compute the population of the world
          */
+    	long worldpopulation = 0;
+    	for(final var app: map.values()) {
+    		 worldpopulation += app;
+    	}
+    	System.out.println("The population of the world is: "+ worldpopulation);
     }
 }
