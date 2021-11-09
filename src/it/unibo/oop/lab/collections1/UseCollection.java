@@ -82,7 +82,20 @@ public final class UseCollection {
     			+ " elements in the head of the ArrayList is: "+ time
     			+ "ns (" + (time / TO_MS) + "ms)");
     	
-        /*
+    	//Insert elements in the head of the LinkedList and measure the time
+    	time = System.nanoTime();
+    	
+    	for(int i = 0; i < HEAD_INSERT_ELEMS; i++) {
+    		linkedList.add(i);
+    	}
+    	
+    	time = System.nanoTime() - time;
+    	
+    	System.out.println("Time to insert:"+ HEAD_INSERT_ELEMS 
+    			+ " elements in the head of the LinkedList is: "+ time
+    			+ "ns (" + (time / TO_MS) + "ms)");
+        
+    	/*
          * 6) Measure the performance of reading 1000 times an element whose
          * position is in the middle of the collection for both ArrayList and
          * LinkedList, using the collections of point 5. In order to measure
