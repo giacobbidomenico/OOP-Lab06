@@ -9,8 +9,10 @@ import java.util.LinkedList;
  * 
  */
 public final class UseCollection {
+	private static final int TO_MS = 1_000_000;
 	private static final int INIT_VALUE = 1000;
     private static final int LAST_VALUE = 2000;
+    private static final int HEAD_INSERT_ELEMS = 1_00_000;
     
     private UseCollection() {
     }
@@ -66,6 +68,20 @@ public final class UseCollection {
          * using the previous lists. In order to measure times, use as example
          * TestPerformance.java.
          */
+    	
+    	//Insert elements in the head of the ArrayList and measure the time
+    	long time = System.nanoTime();
+    	
+    	for(int i = 0; i < HEAD_INSERT_ELEMS; i++) {
+    		arrayList.add(i);
+    	}
+    	
+    	time = System.nanoTime() - time;
+    	
+    	System.out.println("Time to insert:"+ HEAD_INSERT_ELEMS 
+    			+ " elements in the head of the ArrayList is: "+ time
+    			+ "ns (" + (time / TO_MS) + "ms)");
+    	
         /*
          * 6) Measure the performance of reading 1000 times an element whose
          * position is in the middle of the collection for both ArrayList and
