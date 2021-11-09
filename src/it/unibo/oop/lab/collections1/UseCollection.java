@@ -52,6 +52,13 @@ public final class UseCollection {
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
+    	
+    	System.out.print("[");
+    	for(final int app : arrayList) {
+    		System.out.print(app +" ");
+    	}
+    	System.out.println("]");
+    	    	
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
