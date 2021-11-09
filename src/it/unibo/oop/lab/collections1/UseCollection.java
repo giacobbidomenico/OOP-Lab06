@@ -13,6 +13,7 @@ public final class UseCollection {
 	private static final int INIT_VALUE = 1000;
     private static final int LAST_VALUE = 2000;
     private static final int HEAD_INSERT_ELEMS = 1_00_000;
+    private static final int TIMES = 1000;  
     
     private UseCollection() {
     }
@@ -101,6 +102,21 @@ public final class UseCollection {
          * LinkedList, using the collections of point 5. In order to measure
          * times, use as example TestPerformance.java.
          */
+    	
+    	//Read element in the middle of the ArrayList and measure the time
+    	time = System.nanoTime();
+    	
+    	System.out.print("Element read "+ TIMES +" times is:[");
+    	for(int i = 0; i < TIMES; i++) {
+    		System.out.print(arrayList.get(arrayList.size() / 2) +" ");
+    	}
+    	System.out.println("]");
+    	
+    	time = System.nanoTime() - time;
+    	System.out.println("Time to read "+ TIMES 
+    			+ " elements int the middle of the ArrayList is "+ time
+    			+ "ns (" + (time / TO_MS) + "ms)");
+    	
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
