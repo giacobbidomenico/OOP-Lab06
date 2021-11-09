@@ -3,7 +3,11 @@ package it.unibo.oop.lab.exception1;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.junit.Assert.assertFalse;
+
+//import javax.security.auth.login.FailedLoginException;
+
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -46,6 +50,8 @@ public final class BaseRobotTest {
         	assertTrue(e.getMessage().contains("pos"
         			+ "("+ (RobotEnvironment.WORLD_X_UPPER_LIMIT + 1)
         			+ ", 0)"));
+        }catch(NotEnoughBatteryException n) {
+        	fail("Not Enough battery to move");
         }
         /*
          * 3) Move to the top until it reaches the upper right conrner of the world
@@ -64,6 +70,8 @@ public final class BaseRobotTest {
         			+ "("+ RobotEnvironment.WORLD_X_UPPER_LIMIT
         			+ ","+ RobotEnvironment.WORLD_Y_UPPER_LIMIT
         			+ ")");
+        }catch(NotEnoughBatteryException n) {
+        	fail("Not enough battery to move");
         }
     }
 
@@ -83,12 +91,13 @@ public final class BaseRobotTest {
         		r2.moveUp();
         		r2.moveDown();
         	}
-        	
+        	r2.moveDown();
         	//Exception not thrown
-        	fail("Something went wrong!!!!");
+        	fail("Something went wrong!!!! The battery should be low");
         }catch (PositionOutOfBoundException e) {
         	fail("The battery should discharge without generating this exception!!");
-		}
-        
+		}catch (NotEnoughBatteryException n) {
+			assertTrue(n.getMessage().contains("Battery level:"+ r2.getBatteryLevel()));
+		}      
     }
 }
