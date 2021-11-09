@@ -1,11 +1,17 @@
 package it.unibo.oop.lab.collections1;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  * Example class using {@link java.util.List} and {@link java.util.Map}.
  * 
  */
 public final class UseCollection {
-
+	private static final int INIT_VALUE = 1000;
+    private static final int LAST_VALUE = 2000;
+    
     private UseCollection() {
     }
 
@@ -18,6 +24,13 @@ public final class UseCollection {
          * 1) Create a new ArrayList<Integer>, and populate it with the numbers
          * from 1000 (included) to 2000 (excluded).
          */
+
+    	final List<Integer> arrayList = new ArrayList<>();
+    	
+    	for(int i = INIT_VALUE;i < LAST_VALUE;i++) {
+    		arrayList.add(i);
+    	}
+    	
         /*
          * 2) Create a new LinkedList<Integer> and, in a single line of code
          * without using any looping construct (for, while), populate it with
