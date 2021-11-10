@@ -82,7 +82,8 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
 
     @Override
     public Collection<U> getFollowedUsersInGroup(final String groupName) {
-        return null;
+    	final Collection<U> usersOfTheGroup = this.peopleFollowed.get(groupName);
+    	return usersOfTheGroup;
     }
 
     @Override
