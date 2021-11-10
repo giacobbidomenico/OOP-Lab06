@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.ArrayList;
 /**
  * 
  * Instructions
@@ -72,7 +72,12 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
 
     @Override
     public boolean addFollowedUser(final String circle, final U user) {
-        return false;
+    	List<U> usersOfTheGroup = this.peopleFollowed.get(circle);
+    	if(usersOfTheGroup == null) {
+    		usersOfTheGroup = new ArrayList<>();
+    		this.peopleFollowed.put(circle, usersOfTheGroup);	
+    	}
+    	return usersOfTheGroup.add(user);
     }
 
     @Override
