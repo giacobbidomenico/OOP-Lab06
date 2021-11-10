@@ -1,6 +1,8 @@
 package it.unibo.oop.lab.collections2;
 
 import java.util.Collection;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * think of what type of keys and values would best suit the requirements
      */
-
+	private Map<String,List<U>> peopleFollowed = new HashMap<>();
     /*
      * [CONSTRUCTORS]
      * 
