@@ -31,7 +31,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * think of what type of keys and values would best suit the requirements
      */
-	private Map<String,List<U>> peopleFollowed = new HashMap<>();
+	private Map<String,List<U>> peopleFollowed;
     /*
      * [CONSTRUCTORS]
      * 
@@ -58,8 +58,12 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      */
     public SocialNetworkUserImpl(final String name, final String surname, final String user, final int userAge) {
         super(name, surname, user, userAge);
+        peopleFollowed = new HashMap<>();
     }
 
+    public SocialNetworkUserImpl(final String name, final String surname, final String user) {
+        this(name, surname, user, -1);
+    }
     /*
      * [METHODS]
      * 
