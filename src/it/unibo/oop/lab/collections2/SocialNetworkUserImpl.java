@@ -32,7 +32,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * think of what type of keys and values would best suit the requirements
      */
-	private Map<String,List<U>> peopleFollowed;
+	private final Map<String,List<U>> peopleFollowed;
     /*
      * [CONSTRUCTORS]
      * 
@@ -92,7 +92,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
 
     @Override
     public List<U> getFollowedUsers() {
-        List<U> followedUsers = new ArrayList<>();
+        final List<U> followedUsers = new ArrayList<>();
         
     	for(final List<U> usersOfTheGroup : this.peopleFollowed.values()) {
     		followedUsers.addAll(usersOfTheGroup);
