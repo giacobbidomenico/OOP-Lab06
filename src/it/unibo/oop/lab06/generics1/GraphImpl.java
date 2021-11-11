@@ -1,9 +1,19 @@
 package it.unibo.oop.lab06.generics1;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 public class GraphImpl<N> implements Graph<N>{
+	private Map<N,Set<N>> edges;
+	
+	public GraphImpl() {
+		edges = new HashMap<>();
+	}
 	
 	@Override
 	public void addNode(N node) {
