@@ -54,8 +54,42 @@ public class GraphImpl<N> implements Graph<N>{
 	
 	@Override
 	public List<N> getPath(N source, N target) {
-		// TODO Auto-generated method stub
-		return null;
+		//check the existence of the nodes
+				if((!nodeExist(source)) || (!nodeExist(target))) {
+					return Collections.emptyList();
+				}
+				
+				List<N> path = new ArrayList<>();
+				
+				path.add(source);
+				
+				if(source == target) return path;
+				
+				Set<N> adj = this.edges.get(source);
+				
+				//visit adjacent nodes recursively until i find the node
+				for(N currentNode : adj) {
+					
+					if(currentNode == target) {
+						path.add(currentNode);
+						return path;
+					}
+				
+					path.addAll(getPath(currentNode,target));
+					
+					if(!path.isEmpty()) {
+						return path;
+					}
+				}
+				
+				List<N> app = new ArrayList<>();
+				app.add(source);
+				
+				if(path.equals(app)){
+					path.remove(0);
+				}
+				
+				return path;
 	}
 
 }
