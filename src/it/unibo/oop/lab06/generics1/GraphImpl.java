@@ -17,8 +17,8 @@ public class GraphImpl<N> implements Graph<N>{
 	
 	@Override
 	public void addNode(N node) {
-		// TODO Auto-generated method stub
-		
+		Set<N> adj = new TreeSet<>();
+		this.edges.put(node,adj);
 	}
 
 	@Override
