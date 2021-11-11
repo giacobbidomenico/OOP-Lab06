@@ -48,6 +48,10 @@ public class GraphImpl<N> implements Graph<N>{
 		return Collections.emptySet();
 	}
 
+	private boolean nodeExist(N node){
+		return this.edges.containsKey(node);
+	}
+	
 	@Override
 	public List<N> getPath(N source, N target) {
 		// TODO Auto-generated method stub
