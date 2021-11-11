@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class GraphImpl<N> implements Graph<N>{
-	private Map<N,Set<N>> edges;
+	private final Map<N,Set<N>> edges;
 	
 	public GraphImpl() {
 		edges = new HashMap<>();
@@ -17,14 +17,14 @@ public class GraphImpl<N> implements Graph<N>{
 	
 	@Override
 	public void addNode(N node) {
-		Set<N> adj = new TreeSet<>();
+		final Set<N> adj = new TreeSet<>();
 		this.edges.put(node,adj);
 	}
 
 	@Override
 	public void addEdge(N source, N target) {
 		if(nodeExist(source)) {
-			Set<N> sourceSet = this.edges.get(source);
+			final Set<N> sourceSet = this.edges.get(source);
 			if(sourceSet != null) {
 				sourceSet.add(target);
 			}
@@ -55,41 +55,41 @@ public class GraphImpl<N> implements Graph<N>{
 	@Override
 	public List<N> getPath(N source, N target) {
 		//check the existence of the nodes
-				if((!nodeExist(source)) || (!nodeExist(target))) {
-					return Collections.emptyList();
-				}
-				
-				List<N> path = new ArrayList<>();
-				
-				path.add(source);
-				
-				if(source == target) return path;
-				
-				Set<N> adj = this.edges.get(source);
-				
-				//visit adjacent nodes recursively until i find the node
-				for(N currentNode : adj) {
-					
-					if(currentNode == target) {
-						path.add(currentNode);
-						return path;
-					}
-				
-					path.addAll(getPath(currentNode,target));
-					
-					if(!path.isEmpty()) {
-						return path;
-					}
-				}
-				
-				List<N> app = new ArrayList<>();
-				app.add(source);
-				
-				if(path.equals(app)){
-					path.remove(0);
-				}
-				
+		if((!nodeExist(source)) || (!nodeExist(target))) {
+			return Collections.emptyList();
+		}
+		
+		final List<N> path = new ArrayList<>();
+		
+		path.add(source);
+		
+		if(source == target) return path;
+		
+		final Set<N> adj = this.edges.get(source);
+		
+		//visit adjacent nodes recursively until i find the node
+		for(N currentNode : adj) {
+			
+			if(currentNode == target) {
+				path.add(currentNode);
 				return path;
+			}
+		
+			path.addAll(getPath(currentNode,target));
+			
+			if(!path.isEmpty()) {
+				return path;
+			}
+		}
+		
+		final List<N> app = new ArrayList<>();
+		app.add(source);
+		
+		if(path.equals(app)){
+			path.remove(0);
+		}
+		
+		return path;
 	}
 
 }
