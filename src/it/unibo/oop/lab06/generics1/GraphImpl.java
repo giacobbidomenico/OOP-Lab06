@@ -41,8 +41,11 @@ public class GraphImpl<N> implements Graph<N>{
 
 	@Override
 	public Set<N> linkedNodes(N node) {
-		// TODO Auto-generated method stub
-		return null;
+		if(this.nodeExist(node)) {
+			return this.edges.get(node);
+		}
+		
+		return Collections.emptySet();
 	}
 
 	@Override
