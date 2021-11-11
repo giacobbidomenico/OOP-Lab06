@@ -69,7 +69,7 @@ public final class TestStrictBankAccount {
     		try {
     			acc1.depositFromATM(marioRossi.getUserID(), 4);
     		}catch(TransactionsOverQuotaException | WrongAccountHolderException e) {
-    			fail("Unexpected exception");
+    			assertNotNull(e);
     		}
     	}
     	
