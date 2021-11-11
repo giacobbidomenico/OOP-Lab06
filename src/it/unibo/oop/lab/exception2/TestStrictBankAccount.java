@@ -1,6 +1,7 @@
 package it.unibo.oop.lab.exception2;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -36,22 +37,39 @@ public final class TestStrictBankAccount {
     	//test the insertion of a wrong id
     	try {
     		acc1.deposit(10, 300);
+    		fail("Unexpected exception");
     	}catch(WrongAccountHolderException e) {
     		assertNotNull(e);
     	}
     	
     	try {
     		acc2.withdraw(10, 400);
+    		fail("Unexpected exception");
     	} catch(WrongAccountHolderException e) {
     		assertNotNull(e);
     	}
     	
     	try {
     		acc2.computeManagementFees(10);
+    		fail("Unexpected exception");
     	}catch(WrongAccountHolderException e) {
     		assertNotNull(e);
     	}
     	
+    	//test if founds are not enough
+    	try {
+    		acc1.withdraw(marioRossi.getUserID(), 2000);
+    		fail("Unexpected exception");
+    	}catch (NotEnoughFoundsException e) {
+			assertNotNull(e);
+		}
     	
+    	for(int i = 0; i < 10; i++) {
+    		try {
+    			acc2.deposit(mariaVarani.getUserID(), 100);
+    		}catch() {
+    			
+    		}
+    	}
     }
 }
