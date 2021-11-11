@@ -64,11 +64,21 @@ public final class TestStrictBankAccount {
 			assertNotNull(e);
 		}
     	
-    	for(int i = 0; i < 10; i++) {
+    	//test number of transactions over quota
+    	for(int i = 0; i < 10;i++) {
     		try {
-    			acc2.deposit(mariaVarani.getUserID(), 100);
-    		}catch() {
-    			
+    			acc1.depositFromATM(marioRossi.getUserID(), 4);
+    		}catch(TransactionsOverQuotaException | WrongAccountHolderException e) {
+    			fail("Unexpected exception");
+    		}
+    	}
+    	
+    	for(int i = 0; i < 10;i++) {
+    		try {
+    			acc1.withdrawFromATM(marioRossi.getUserID(), 1);
+    			fail("Unexpected exception");
+    		}catch(TransactionsOverQuotaException | WrongAccountHolderException e) {
+    			assertNotNull(e);
     		}
     	}
     }
