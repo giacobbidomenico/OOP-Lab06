@@ -23,8 +23,15 @@ public class GraphImpl<N> implements Graph<N>{
 
 	@Override
 	public void addEdge(N source, N target) {
-		// TODO Auto-generated method stub
-		
+		if(nodeExist(source)) {
+			Set<N> sourceSet = this.edges.get(source);
+			if(sourceSet != null) {
+				sourceSet.add(target);
+			}
+			if(!nodeExist(target)) {
+				this.addNode(target);
+			}
+		}
 	}
 
 	@Override
