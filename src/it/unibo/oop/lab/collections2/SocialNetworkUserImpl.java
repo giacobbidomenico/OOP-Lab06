@@ -85,7 +85,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
     public Collection<U> getFollowedUsersInGroup(final String groupName) {
     	final Collection<U> usersOfTheGroup = this.peopleFollowed.get(groupName);
     	if(usersOfTheGroup != null) {
-    		return usersOfTheGroup;
+    		return new ArrayList<>(usersOfTheGroup);
     	}
     	return Collections.emptyList();
     }
